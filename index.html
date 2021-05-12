@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--appearance-->
+<html>
+  <header class="header">
+      <h1>Kinematics</h1>
+      </header>
+  <body> 
+    <div class="sidebar">
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/index.html"> Kinematics</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/forces.html">Momentum</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/nrg.html">Energy</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/CF.html">Centripetal Force</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/gravitation.html">Gravitation</a>
+    </div>
+   <br>
+  </br>
+  <div id="el">
+    <!--text boxes-->
+<form>
+<p>Initial Velocity (In m/s)</p>
+    <input type ="text" id="Vi" placeholder="Initial Velocity (In m/s)" value="Initial Velocity (In m/s)"class="entr">
+    <br>
+  </br>
+<p>Final Velocity (in m/s)</p>
+    <input type ="text" id="Vf" placeholder="Final Velocity (in m/s)" value="Final Velocity (in m/s)" class="entr">
+    <br>
+  </br>
+<p>Time (In seconds)</p>
+    <input type ="text" id="T" placeholder="Time (In seconds)" value="Time (In seconds)" class="entr">
+    <br>
+  </br>
+<p>Distance (in Meters)</p>
+    <input type ="text" id="D" placeholder="Distance (in Meters)" value="Distance (in Meters)" class="entr">
+    <br>
+  </br>
+<p>Acceleration</p>
+    <input type ="text" id="A" placeholder="Acceleration" value="Acceleration" class="entr">
+    <br>
+</br>
+<button type ="submit" class="btn" onclick=calcNums()>Calculate</button>
+</form>
+</div>
+  <!-- 
+      <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    built files will be auto injected -->
+  </body>
+</html>
+<script>
+  //calculates answers based off of givens
+function calcNums(){
+  var A=document.getElementById("A").value;
+  var Vi=document.getElementById("Vi").value;
+  var Vf=document.getElementById("Vf").value;
+  var T=document.getElementById("T").value;
+  var D=document.getElementById("D").value;
+  var Total1=0;
+  var Total2=0;
+  if(!isNaN(Vi) && !isNaN(A) && !isNaN(T)){
+    Total2=(Vi*T)+(.5*A*(Math.pow(T,2)));
+    Total1=Math.sqrt(((Math.pow(Vi,2))+(2*A*Total2)))
+    window.alert("Vf = " +Total1+ "m/s      D = "+Total2+"m");
+  }
+
+  else if(!isNaN(Vi) && !isNaN(Vf) && !isNaN(T)){
+    Total1=((Vf-Vi)/T);
+    Total2=(Vi*T)+(.5*Total1*(Math.pow(T,2)));
+    window.alert("A = "+Total1+"m/s/s      D = "+Total2+"m");
+  }
+
+  else if(!isNaN(Vi) && !isNaN(Vf) && !isNaN(A)){
+    Total1=((Vf-Vi)/A);
+    Total2=(Vi*Total1)+(.5*A*Math.pow(Total1,2))
+    window.alert("T = "+Total1+"s      D = "+Total2+"m");
+  }
+
+  else if(!isNaN(Vi) && !isNaN(Vf) && !isNaN(D)){
+    Total1=((Math.pow(Vf,2))-(Math.pow(Vi,2)))/(2*D);
+    Total2=((Vf-Vi)/Total1);
+    window.alert("A = "+Total1+"m/s/s      T = "+Total2+"s");
+  }
+
+  else if(!isNaN(Vi) && !isNaN(A) && !isNaN(D)){
+    Total1=Math.sqrt((Math.pow(Vi,2))+(2*A*D))
+    Total2=((Total1-Vi)/A);
+    window.alert("Vf = "+Total1+"m/s      T = "+Total2+"s");
+  }
+
+  else if(!isNaN(Vi) && !isNaN(T) && !isNaN(D)){
+    Total1=(((2*D)/T)-Vi);
+    Total2=(Total1-Vi)/T
+    window.alert("Vf = "+Total1+"m/s      A = "+Total2+"m/s/s");
+  }
+
+  else if(!isNaN(Vf) && !isNaN(T) && !isNaN(A)){
+    Total1=(Vf-(A*T));
+    Total2=(Total1*T)+(.5*A*Math.pow(T,2))
+    window.alert("Vi = "+Total1+"m/s      D = "+Total2+"m");
+  }
+  
+  else if(!isNaN(Vf) && !isNaN(A) && !isNaN(D)){
+    Total1=Math.sqrt((Math.pow(Vf,2))-(2*A*D));
+    Total2=((Vf-Total1)/A);
+    window.alert("Vi = "+Total1+"m/s      T = "+Total2+"s");
+  }
+  
+  else if(!isNaN(Vf) && !isNaN(T) && !isNaN(D)){
+    Total1=((2*D)/T)-Vf;
+    Total2=(Vf-Total1)/T
+    window.alert("Vi = "+Total1+"m/s      A = "+Total2+"m/s/s");
+  }
+  else if(!isNaN(T) && !isNaN(A) && !isNaN(D)){
+    Total1=(D-(.5*A*(Math.pow(T,2))))/T;
+    Total2=Total1+(A*T);
+    window.alert("Vi = "+Total1+"m/s      Vf = "+Total2+"m/s");
+  }
+  else{
+    window.alert("Not enough information given");
+  }
+}
+</script>
+<!--appearance-->
+<style>
+  * {
+   box-sizing:  border-box;
+   margin: 0;
+   Padding: 0;
+ }
+ .btn{
+ width: 175px;
+ border: 2px solid #aaa;
+ border-radius: 4px;
+ outline: none;
+ padding: 8px;
+ background: rgb(52,183,143);
+ color: rgb(250,250,250);
+ box-sizing:border-box;
+ }
+ .btn:hover{
+ border-color: rgb(52,183,143);
+ box-shadow: 0 0 8px rgb(52,183,143);
+ }
+   .entr{
+ width: 300px;
+ background: rgb(220,220,220);
+ border: 2px solid #aaa;
+ border-radius: 4px;
+ outline: none;
+ padding: 8px;
+ color: rgb(30,30,30);
+ box-sizing:border-box;
+ }
+ .entr:hover{
+ border-color: rgb(52,183,143);
+ box-shadow: 0 0 8px rgb(52,183,143);
+ }
+ .entr:focus{
+ border-color: rgb(52,183,143);
+ box-shadow: 0 0 8px rgb(52,183,143);
+ }
+.header {
+  background-position-x: center; 
+  background: rgb(50,50,50);
+   color: rgb(255,255,255);
+   text-align: center;
+   padding: 12px;
+ }
+body{
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: rgb(30,30,30);
+  Background: rgb(230,230,230)
+}
+.display{
+    display: none;
+}
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 44px;
+  left: 0;
+  background-color: rgb(50,50,50);
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 20px 8px 20px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color:rgb(230,230,230);
+  display: block;
+}
+
+.sidebar a:hover {
+  background:rgb(32,163,123);
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+

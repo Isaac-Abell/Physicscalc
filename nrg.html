@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <!--appearance-->
+  <head>
+    </head>
+  <header class="header">
+      <h1>Energy</h1>
+      </header>
+  <body> 
+    <div class="sidebar">
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/index.html"> Kinematics</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/forces.html">Momentum</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/nrg.html">Energy</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/CF.html">Centripetal Force</a>
+      <a href="C:/Users/abell/Desktop/Physics%20Calcul8tor/public/gravitation.html">Gravitation</a>
+    </div>
+   <br>
+  </br>
+  <div id="el">
+<form>
+  <!--imput buttons-->
+    <p>Mass (in grams)</p>
+    <input type ="text" id="m" placeholder="Mass (in kilograms)" value="Mass (in kilograms)"class="entr">
+    <br>
+  </br>
+<p>Acceleration of Gravity</p>
+    <input type ="text" id="g" placeholder="Acceleration of Gravity" value="Acceleration of Gravity" class="entr">
+    <br>
+  </br>
+<p>Height (in Meters)</p>
+    <input type ="text" id="h" placeholder="Height (in Meters)" value="Height (in Meters)" class="entr">
+    <br>
+  </br>
+<p>Velocity (in m/s)</p>
+    <input type ="text" id="v" placeholder="Velocity (in m/s)" value="Velocity (in m/s)" class="entr">
+    <br>
+  </br>
+  <p>Kinetic Energy</p>
+    <input type ="text" id="Ke" placeholder="Kinetic Energy" value="Kinetic Energy" class="entr">
+    <br>
+  </br>
+  <p>Potential Energy</p>
+  <input type ="text" id="Pe" placeholder="Potential Energy" value="Potential Energy" class="entr">
+  <br>
+</br>
+<button type ="submit" class="btn" onclick=calcNums()>Calculate</button>
+</form>
+
+</div>
+
+  <!-- 
+      <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    built files will be auto injected -->
+  </body>
+</html>
+<!--calculates numbers based of of givens-->
+<script>
+  function calcNums(){
+  var M=document.getElementById("m").value;
+  var G=document.getElementById("g").value;
+  var H=document.getElementById("h").value;
+  var V=document.getElementById("v").value;
+  var Ke=document.getElementById("Ke").value;
+  var Pe=document.getElementById("Pe").value;
+  if(!isNaN(M) && !isNaN(G) && !isNaN(H)){
+    V=Math.sqrt((2*G*H));
+    Ke=((.5*M)*(Math.pow(V,2)));
+    Pe=(M*G*H);
+    V=V.toFixed(5);
+    Ke=Ke.toFixed(5);
+    Pe=Pe.toFixed(5);
+    window.alert("Velocity = "+V+"m/s      Kinetic energy = "+Ke+"J      Potential energy = "+Pe+"J");
+  }
+  else if(!isNaN(G) && !isNaN(H)){
+     if (!isNaN(Ke)){
+        M=(Ke)/(G*H)
+        V=Math.sqrt((2*G*H));
+        M=M.toFixed(5);
+        V=V.toFixed(5);
+         window.alert("Velocity = "+V+ "m/s      Mass = "+M+"kg      Potential energy = "+Ke+"J");
+        }
+  else if (!isNaN(Pe)){
+       M=(Pe)/(G*H)
+       V=Math.sqrt((2*G*H));
+       M=M.toFixed(5);
+       V=V.toFixed(5);
+       window.alert("Velocity = "+V+ "m/s      Mass = "+M+"kg      Kinetic energy = "+Pe+"J");
+    }
+  else{
+    V=Math.sqrt((2*G*H));
+    V=V.toFixed(5);
+    window.alert("Velocity = "+V+"m/s");
+  }
+  }
+  else  if(!isNaN(M) && !isNaN(G) && !isNaN(V)){
+    H=((.5*Math.pow(V,2))/G);
+    Ke=((.5*M)*(Math.pow(V,2)));
+    Pe=(M*G*H);
+    H=H.toFixed(5);
+    Pe=Pe.toFixed(5);
+    Ke=Ke.toFixed(5);
+    window.alert("Height = "+H+"m      Kinetic energy = "+Ke+"J      Potential energy = "+Pe+"J");
+  }
+  else  if(!isNaN(M) && !isNaN(G) && !isNaN(V)){
+    H=((.5*Math.pow(V,2))/G);
+    H=H.toFixed(5);
+    window.alert("Height = "+H+"m");
+  }
+  else  if(!isNaN(M) && !isNaN(V) && !isNaN(H)){
+    G=((.5*Math.pow(V,2))/H);
+    Ke=((.5*M)*(Math.pow(V,2)));
+    Pe=(M*G*H);
+    G=G.toFixed(5);
+    Pe=Pe.toFixed(5);
+    Ke=Ke.toFixed(5);
+    window.alert("Accelleration of gravity = "+G+"m/s/s      Kinetic energy = "+Ke+"J      Potential energy = "+Pe+"J");
+}
+else  if(!isNaN(V) && !isNaN(H)){
+    G=((.5*Math.pow(V,2))/H);
+    G=G.toFixed(5);
+    window.alert("Accelleration of gravity = "+G+"m/s/s");
+}
+else  if(!isNaN(Ke) && !isNaN(V)){
+  M=(Ke)/(.5*Math.pow(V,2))
+  M=M.toFixed(5);
+  window.alert("Mass = "+M+"m      Potential energy = "+Ke+"J");
+}
+else  if(!isNaN(Pe) && !isNaN(V)){
+  M=(Pe)/(.5*Math.pow(V,2))
+  M=M.toFixed(5);
+  window.alert("Mass = "+M+"m      Potential energy = "+Pe+"J");
+}
+}
+</script>
+
+<style>
+  * {
+   box-sizing:  border-box;
+   margin: 0;
+   Padding: 0;
+ }
+ .btn{
+ width: 175px;
+ border: 2px solid #aaa;
+ border-radius: 4px;
+ outline: none;
+ padding: 8px;
+ background: rgb(52,183,143);
+ color: rgb(250,250,250);
+ box-sizing:border-box;
+ }
+ .btn:hover{
+ border-color: rgb(52,183,143);
+ box-shadow: 0 0 8px rgb(52,183,143);
+ }
+   .entr{
+ width: 300px;
+ background: rgb(220,220,220);
+ border: 2px solid #aaa;
+ border-radius: 4px;
+ outline: none;
+ padding: 8px;
+ color: rgb(30,30,30);
+ box-sizing:border-box;
+ }
+ .entr:hover{
+ border-color: rgb(52,183,143);
+ box-shadow: 0 0 8px rgb(52,183,143);
+ }
+ .entr:focus{
+ border-color: rgb(52,183,143);
+ box-shadow: 0 0 8px rgb(52,183,143);
+ }
+.header {
+  background-position-x: center; 
+  background: rgb(50,50,50);
+   color: rgb(255,255,255);
+   text-align: center;
+   padding: 12px;
+ }
+body{
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: rgb(30,30,30);
+  Background: rgb(230,230,230)
+}
+.display{
+    display: none;
+}
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 44px;
+  left: 0;
+  background-color: rgb(50,50,50);
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 20px 8px 20px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color:rgb(230,230,230);
+  display: block;
+}
+
+.sidebar a:hover {
+  background:rgb(32,163,123);
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+
